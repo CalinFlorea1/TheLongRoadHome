@@ -45,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable {
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         graphics2D = (Graphics2D) image.getGraphics();
 
-        mouse = new MouseHandler();
+        mouse = new MouseHandler(this);
         key = new KeyHandler(this);
 
         gameStateManager = new GameStateManager();
@@ -121,7 +121,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void render (){
         if (graphics2D != null){
-            graphics2D.setColor(new Color(255, 0, 0));
+            graphics2D.setColor(new Color(0, 0, 0));
             graphics2D.fillRect(0, 0, width, height);
             gameStateManager.render(graphics2D);
         }

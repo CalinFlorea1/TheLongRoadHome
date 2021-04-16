@@ -1,4 +1,4 @@
-package graphics;
+package TheLongRoadHome.graphics;
 
 import TheLongRoadHome.Handler.Vector2f;
 
@@ -7,8 +7,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
 
-public class Font {
-    private BufferedImage FONTSHEET = null;
+public class Sprite {
+    private BufferedImage SPRITESHEET = null;
     private BufferedImage[][] spriteArray;
 
     private final int TILE_SIZE = 64;
@@ -16,33 +16,33 @@ public class Font {
     public int widthTile;
     public int heightTile;
 
-    private int widthFont;
-    private int heightFont;
+    private int widthSprite;
+    private int heightSprite;
 
-    public Font (String file){
+    public Sprite (String file){
         widthTile = TILE_SIZE;
         heightTile = TILE_SIZE;
 
         System.out.println("Loading: " + file + "...");
 
-        FONTSHEET = loadFont (file);
+        SPRITESHEET = loadSprite (file);
 
-        widthFont = FONTSHEET.getWidth() / widthTile;
-        heightFont = FONTSHEET.getHeight() / heightTile;
+        widthSprite = SPRITESHEET.getWidth() / widthTile;
+        heightSprite = SPRITESHEET.getHeight() / heightTile;
 
         loadSpriteArray ();
     }
 
-    public Font (String file, int _widthTile, int _heightTile){
+    public Sprite (String file, int _widthTile, int _heightTile){
         widthTile = _widthTile;
         heightTile = _heightTile;
 
         System.out.println("Loading: " + file + "...");
 
-        FONTSHEET = loadFont (file);
+        SPRITESHEET = loadSprite (file);
 
-        widthFont = FONTSHEET.getWidth() / widthTile;
-        heightFont = FONTSHEET.getHeight() / heightTile;
+        widthSprite = SPRITESHEET.getWidth() / widthTile;
+        heightSprite = SPRITESHEET.getHeight() / heightTile;
 
         loadSpriteArray ();
     }
@@ -54,12 +54,12 @@ public class Font {
 
     public void setWidth (int _width){
         widthTile = _width;
-        widthFont = FONTSHEET.getWidth() / widthTile;
+        widthSprite = SPRITESHEET.getWidth() / widthTile;
     }
 
     public void setHeight (int _height){
         heightTile = _height;
-        heightFont = FONTSHEET.getHeight() / heightTile;
+        heightSprite = SPRITESHEET.getHeight() / heightTile;
     }
 
     public int getWidth (){
@@ -70,7 +70,7 @@ public class Font {
         return heightTile;
     }
 
-    private BufferedImage loadFont (String file){
+    private BufferedImage loadSprite (String file){
         BufferedImage sprite = null;
         try{
             sprite = ImageIO.read(getClass().getClassLoader().getResourceAsStream(file));
@@ -83,31 +83,31 @@ public class Font {
     }
 
     public void loadSpriteArray (){
-        spriteArray = new BufferedImage[widthFont][heightFont];
+        spriteArray = new BufferedImage[heightSprite][widthSprite];
 
-        for (int i = 0; i < widthFont; i++){
-            for (int j = 0; j < heightFont; j++){
-                spriteArray[i][j] = getFont (i, j);
+        for (int j = 0; j < heightSprite; j++){
+            for (int i = 0; i < widthSprite; i++) {
+                spriteArray[j][i] = getSprite(i, j);
             }
         }
     }
 
-    public BufferedImage getFontSheet (){
-        return FONTSHEET;
+    public BufferedImage getSpriteSheet (){
+        return SPRITESHEET;
     }
 
-    public BufferedImage getFont (int x, int y) {
-        return FONTSHEET.getSubimage(x * widthTile, y * heightTile, widthTile, heightTile);
+    public BufferedImage getSprite (int x, int y) {
+        return SPRITESHEET.getSubimage(x * widthTile, y * heightTile, widthTile, heightTile);
     }
 
-    public BufferedImage getFont (char letter) {
-        int value = letter - 'A';
-
-        int x = value % widthFont;
-        int y = value % heightFont;
-
-        return FONTSHEET.getSubimage(x, y, widthTile, heightTile);
+    public BufferedImage[] getSpriteArray (int i){
+        return spriteArray[i];
     }
+
+    public BufferedImage[][] getSpriteMatrix (){
+        return spriteArray;
+    }
+
     public static void drawArray (Graphics2D graphics2D, Vector<BufferedImage> image, Vector2f position, int _width, int _height, int xOffset, int yOffset){
         float x = position.x;
         float y = position.y;
@@ -128,8 +128,9 @@ public class Font {
         for (int i = 0; i < word.length(); i++){
             if (word.charAt(i) != 32)
                 graphics2D.drawImage(font.getFont (word.charAt(i)), (int) x, (int) y, _width, _height, null);
+            x += xOffset;
+            y += yOffset;
         }
+
     }
-
 }
-
