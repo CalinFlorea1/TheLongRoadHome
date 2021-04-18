@@ -4,6 +4,7 @@ import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 import TheLongRoadHome.Handler.Vector2f;
 import TheLongRoadHome.graphics.*;
+import TheLongRoadHome.states.PlayState;
 
 import java.awt.*;
 
@@ -77,9 +78,13 @@ public class Player extends Entity{
     public void update (){
         super.update();
         move ();
+        //if (!bounds.collisionTile(dx, 0)){
+            pos.x += dx;
+        //}
 
-        pos.x += dx;
-        pos.y += dy;
+        //if (!bounds.collisionTile(0, dy)){
+            pos.y += dy;
+        //}
     }
     @Override
     public void render(Graphics2D graphics2D) {

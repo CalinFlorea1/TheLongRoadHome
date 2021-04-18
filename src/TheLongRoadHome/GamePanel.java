@@ -39,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    public void Init (){
+    public void Init () throws Exception {
         isRunning = true;
 
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -53,7 +53,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        Init();
+        try {
+            Init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         final double GAME_HERTZ = 60.0;
         final double timeBeforeRender = 1000000000 / GAME_HERTZ;
@@ -121,7 +125,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void render (){
         if (graphics2D != null){
-            graphics2D.setColor(new Color(0, 0, 0));
+            graphics2D.setColor(new Color(72, 91, 45));
             graphics2D.fillRect(0, 0, width, height);
             gameStateManager.render(graphics2D);
         }

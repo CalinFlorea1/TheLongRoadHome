@@ -19,7 +19,7 @@ public class GameStateManager {
     public static final int PAUSE = 2;
     public static final int GAMEOVER = 3;
 
-    public GameStateManager (){
+    public GameStateManager () throws Exception {
         map = new Vector2f(GamePanel.width, GamePanel.height);
         Vector2f.setWorldVar(map.x, map.y);
 
@@ -31,7 +31,7 @@ public class GameStateManager {
         ListofStates.remove(state);
     }
 
-    public void add (int state){
+    public void add (int state) throws Exception {
         switch (state) {
             case PLAY:
                 ListofStates.add(new PlayState(this));
@@ -48,7 +48,7 @@ public class GameStateManager {
         }
     }
 
-    public void addAndpop (int state){
+    public void addAndpop (int state) throws Exception {
         ListofStates.remove(0);
         add (state);
     }
