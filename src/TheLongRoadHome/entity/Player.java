@@ -11,6 +11,10 @@ import java.awt.*;
 public class Player extends Entity{
     public Player(Sprite _sprite, Vector2f _origin, int _size) {
         super(_sprite, _origin, _size);
+        bounds.setWidth(40);
+        bounds.setHeight(40);
+        bounds.setxOffset(14);
+        bounds.setyOffset(14);
     }
 
     public void move (){
@@ -78,13 +82,15 @@ public class Player extends Entity{
     public void update (){
         super.update();
         move ();
-        //if (!bounds.collisionTile(dx, 0)){
-            pos.x += dx;
-        //}
+        if (!bounds.collisionTile(dx, 0)){
+            if (pos.x + dx > 0 && pos.x + dx <= 1856)
+                pos.x += dx;
+        }
 
-        //if (!bounds.collisionTile(0, dy)){
-            pos.y += dy;
-        //}
+        if (!bounds.collisionTile(0, dy)){
+            if (pos.y + dy > 0 && pos.y + dy <= 1016)
+                pos.y += dy;
+        }
     }
     @Override
     public void render(Graphics2D graphics2D) {
@@ -94,7 +100,7 @@ public class Player extends Entity{
     public void input (MouseHandler mouse, KeyHandler key){
 
         if (mouse.getButton () == 1){
-            System.out.println("Player: " + pos.x + ", " + pos.y);
+            ;
         }
 
         if (key.up.down){

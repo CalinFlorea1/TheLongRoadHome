@@ -23,7 +23,7 @@ public class TileMapObj extends TileMap{
             int temp = Integer.parseInt(block[i].replaceAll("\\s+",""));
             if (temp != 0){
                 tempBlock = new ObjBlock(_sprite.getSprite((int)((temp - 1) % _tileColumns), (int)((temp - 1) / _tileColumns)), new Vector2f((int)(i % _width) * _tileWidth, (int)(i / _width) * _tileHeight) ,_tileWidth, _tileHeight);
-                tileMapObjects_blocks.put(String.valueOf((int) (i % _width)) + "," + String.valueOf((int) (i / _height)), tempBlock);
+                tileMapObjects_blocks.put(String.valueOf((int) (i % _width)) + "," + String.valueOf((int) (i / _width)), tempBlock);
             }
         }
     }

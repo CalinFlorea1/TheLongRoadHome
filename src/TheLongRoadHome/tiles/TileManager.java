@@ -62,10 +62,10 @@ public class TileManager {
 
                 data[i] = element.getElementsByTagName("data").item(i).getTextContent();
                 if (i >= 1){
-                    tileMap.add (new TileMapNorm (data[i], sprite, width, height, tileWidth, tileHeight,  tileColumns));
+                    tileMap.add(new TileMapObj(data[i], sprite, width, height, tileWidth, tileHeight,  tileColumns));
                 }
                 else{
-                    tileMap.add(new TileMapObj(data[i], sprite, width, height, tileWidth, tileHeight,  tileColumns));
+                    tileMap.add (new TileMapNorm (data[i], sprite, width, height, tileWidth, tileHeight,  tileColumns));
                 }
             }
         }

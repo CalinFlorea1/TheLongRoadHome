@@ -23,7 +23,7 @@ public class PlayState extends GameState{
         tileManager = new TileManager("Map/mapLvl1.xml");
 
         font = new Font ("Textures/Font.png", 16, 16);
-        player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(300, 300), 80);
+        player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64);
     }
 
     public void update (){

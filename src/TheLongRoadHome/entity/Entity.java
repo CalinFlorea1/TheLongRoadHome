@@ -36,8 +36,8 @@ public abstract class Entity {
     protected float dy;
 
     protected float maxSpeed = 1.0f;
-    protected float acceleration = 0.5f;
-    protected float deacceleration = 0.01f;
+    protected float acceleration = 0.6f;
+    protected float deacceleration = 0.06f;
 
     protected AABB hitBounds;
     protected AABB bounds;

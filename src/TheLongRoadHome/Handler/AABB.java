@@ -110,8 +110,10 @@ public class AABB {
             int xt = (int) ((position.x + _ax) + (int)(direction % 2) * width + xOffset) / 64;
             int yt = (int) ((position.y + _ay) + (int)(direction / 2) * height + yOffset) / 64;
 
-            if (TileMapObj.tileMapObjects_blocks.containsKey(String.valueOf(xt) + "," + String.valueOf(yt)));
+
+            if (TileMapObj.tileMapObjects_blocks.containsKey(String.valueOf(xt) + "," + String.valueOf(yt))) {
                 return TileMapObj.tileMapObjects_blocks.get(String.valueOf(xt) + "," + String.valueOf(yt)).update(this);
+            }
         }
         return false;
     }
