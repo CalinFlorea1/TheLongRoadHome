@@ -39,6 +39,10 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    public void setIsRunning (){
+        isRunning = false;
+    }
+
     public void Init () throws Exception {
         isRunning = true;
 

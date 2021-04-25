@@ -1,7 +1,11 @@
 package TheLongRoadHome.Handler;
 
+import TheLongRoadHome.entity.Enemy;
 import TheLongRoadHome.entity.Entity;
+import TheLongRoadHome.states.PlayState;
 import TheLongRoadHome.tiles.TileMapObj;
+
+import java.awt.*;
 
 public class AABB {
     private Vector2f position;
@@ -77,11 +81,11 @@ public class AABB {
     }
 
     public boolean collides (AABB bBox){
-        float ax = (position.getWorldVar().x + (xOffset) + (width / 2));
-        float ay = (position.getWorldVar().y + (yOffset) + (height / 2));
+        float ax = (position.x + (xOffset) + (width / 2));
+        float ay = (position.y + (yOffset) + (height / 2));
 
-        float bx = (bBox.position.getWorldVar().x + (bBox.xOffset / 2) + (width / 2));
-        float by = (bBox.position.getWorldVar().y + (bBox.yOffset / 2) + (height / 2));
+        float bx = (bBox.position.x + (bBox.xOffset / 2) + (width / 2));
+        float by = (bBox.position.y + (bBox.yOffset / 2) + (height / 2));
 
         if (Math.abs(ax - bx) < ((width / 2) + (bBox.width / 2))){
             if (Math.abs(ay - by) < ((height / 2) + (bBox.height / 2))){
@@ -114,6 +118,16 @@ public class AABB {
             if (TileMapObj.tileMapObjects_blocks.containsKey(String.valueOf(xt) + "," + String.valueOf(yt))) {
                 return TileMapObj.tileMapObjects_blocks.get(String.valueOf(xt) + "," + String.valueOf(yt)).update(this);
             }
+        }
+        return false;
+    }
+
+    public boolean collisionEntity (float _ax, float _ay){
+        Rectangle player = new Rectangle((int)(position.x + _ax), (int)(position.y + _ay), 48, 48);
+        for (Enemy _enemy : PlayState.enemy) {
+            Rectangle temp = new Rectangle((int)_enemy.getPos().x, (int)_enemy.getPos().y, 48, 48);
+            if (player.intersects(temp))
+                return true;
         }
         return false;
     }

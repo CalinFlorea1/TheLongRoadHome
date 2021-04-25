@@ -122,6 +122,8 @@ public abstract class Entity {
         return bounds;
     }
 
+    public Vector2f getPos (){return pos;}
+
 
     private void setHitBoxDirection (){
         if (up){

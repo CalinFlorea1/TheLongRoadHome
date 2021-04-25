@@ -1,21 +1,22 @@
 package TheLongRoadHome.entity;
 
-import TheLongRoadHome.Handler.KeyHandler;
-import TheLongRoadHome.Handler.MouseHandler;
+import TheLongRoadHome.Handler.AABB;
 import TheLongRoadHome.Handler.Vector2f;
-import TheLongRoadHome.graphics.*;
-import TheLongRoadHome.states.PlayState;
+import TheLongRoadHome.graphics.Sprite;
 
 import java.awt.*;
-import java.util.Vector;
 
-public class Player extends Entity{
-    public Player(Sprite _sprite, Vector2f _origin, int _size) {
+public class Enemy extends Entity{
+
+    public Enemy(Sprite _sprite, Vector2f _origin, int _size) {
         super(_sprite, _origin, _size);
         bounds.setWidth(40);
         bounds.setHeight(40);
         bounds.setxOffset(14);
         bounds.setyOffset(14);
+    }
+
+    public void update (){
     }
 
     public void move (){
@@ -80,65 +81,8 @@ public class Player extends Entity{
         }
     }
 
-    public void update (){
-        super.update();
-        move ();
-        if (!bounds.collisionTile(dx, 0)){
-            if (!bounds.collisionEntity(dx, 0))
-                if (pos.x + dx > 0 && pos.x + dx <= 1856)
-                    pos.x += dx;
-        }
-
-        if (!bounds.collisionTile(0, dy)){
-            if (!bounds.collisionEntity(0, dy))
-                if (pos.y + dy > 0 && pos.y + dy <= 1016)
-                    pos.y += dy;
-        }
-    }
     @Override
     public void render(Graphics2D graphics2D) {
         graphics2D.drawImage(animation.getImage(), (int) (pos.x), (int) (pos.y), size, size, null);
-    }
-
-    public void input (MouseHandler mouse, KeyHandler key){
-
-        if (mouse.getButton () == 1){
-            ;
-        }
-
-        if (key.up.down){
-            up = true;
-        }
-        else{
-            up = false;
-        }
-
-        if (key.down.down){
-            down = true;
-        }
-        else{
-            down = false;
-        }
-
-        if (key.left.down){
-            left = true;
-        }
-        else{
-            left = false;
-        }
-
-        if (key.right.down){
-            right = true;
-        }
-        else{
-            right = false;
-        }
-
-        if (key.shot.down){
-            attack = true;
-        }
-        else {
-            attack = false;
-        }
     }
 }
