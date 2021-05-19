@@ -10,13 +10,28 @@ public class Enemy extends Entity{
 
     public Enemy(Sprite _sprite, Vector2f _origin, int _size) {
         super(_sprite, _origin, _size);
-        bounds.setWidth(40);
-        bounds.setHeight(40);
-        bounds.setxOffset(14);
-        bounds.setyOffset(14);
+        bounds.setWidth(50);
+        bounds.setHeight(50);
+        bounds.setxOffset(10);
+        bounds.setyOffset(10);
+        down = true;
+        life = 20;
     }
 
     public void update (){
+        super.update();
+        move ();
+        if (!bounds.collisionTile(dx, 0)){
+            if (!bounds.collisionEntity(dx, 0))
+                if (pos.x + dx > 0 && pos.x + dx <= 1856)
+                    pos.x += dx;
+        }
+
+        if (!bounds.collisionTile(0, dy)){
+            if (!bounds.collisionEntity(0, dy))
+                if (pos.y + dy > 0 && pos.y + dy <= 1016)
+                    pos.y += dy;
+        }
     }
 
     public void move (){

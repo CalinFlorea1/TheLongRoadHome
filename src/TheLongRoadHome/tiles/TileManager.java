@@ -52,14 +52,12 @@ public class TileManager {
 
             nodeList = document.getElementsByTagName("layer");
             layer = nodeList.getLength();
-
             for (int i = 0; i < layer; i++){
                 node = nodeList.item(i);
                 if (i <= 0){
                     width = Integer.parseInt(element.getAttribute("width"));
                     height = Integer.parseInt(element.getAttribute("height"));
                 }
-
                 data[i] = element.getElementsByTagName("data").item(i).getTextContent();
                 if (i >= 1){
                     tileMap.add(new TileMapObj(data[i], sprite, width, height, tileWidth, tileHeight,  tileColumns));

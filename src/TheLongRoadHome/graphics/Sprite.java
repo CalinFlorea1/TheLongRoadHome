@@ -108,6 +108,10 @@ public class Sprite {
         return spriteArray;
     }
 
+    public static void drawPhoto (Graphics2D graphics2D, BufferedImage image, Vector2f position, int _width, int _height){
+        graphics2D.drawImage(image, (int)position.x, (int)position.y, _width, _height, null);
+    }
+
     public static void drawArray (Graphics2D graphics2D, Vector<BufferedImage> image, Vector2f position, int _width, int _height, int xOffset, int yOffset){
         float x = position.x;
         float y = position.y;

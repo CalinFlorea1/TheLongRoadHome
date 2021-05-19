@@ -83,7 +83,11 @@ public class GamePanel extends JPanel implements Runnable {
             int updateCount = 0;
             while (((now - lastUpdateTime) > timeBeforeRender) && (updateCount < mustUpdateBeforeRender)){
                 update();
-                input (mouse, key);
+                try {
+                    input (mouse, key);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 lastUpdateTime += timeBeforeRender;
                 updateCount++;
             }
@@ -91,7 +95,11 @@ public class GamePanel extends JPanel implements Runnable {
             if (now - lastUpdateTime > timeBeforeRender){
                 lastUpdateTime = now - timeBeforeRender;
             }
-            input (mouse, key);
+            try {
+                input (mouse, key);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             render();
             draw ();
             lastRenderTime = now;
@@ -119,7 +127,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    private void input(MouseHandler mouse, KeyHandler key) {
+    private void input(MouseHandler mouse, KeyHandler key) throws Exception {
         gameStateManager.input(mouse, key);
     }
 

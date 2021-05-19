@@ -12,6 +12,7 @@ import java.util.Vector;
 public class Player extends Entity{
     public Player(Sprite _sprite, Vector2f _origin, int _size) {
         super(_sprite, _origin, _size);
+        life = 100;
         bounds.setWidth(40);
         bounds.setHeight(40);
         bounds.setxOffset(14);
@@ -81,6 +82,12 @@ public class Player extends Entity{
     }
 
     public void update (){
+        if (delayShot != 0)
+            delayShot++;
+
+        if (delayShot == 20)
+            delayShot = 0;
+
         super.update();
         move ();
         if (!bounds.collisionTile(dx, 0)){
@@ -101,13 +108,13 @@ public class Player extends Entity{
     }
 
     public void input (MouseHandler mouse, KeyHandler key){
-
         if (mouse.getButton () == 1){
             ;
         }
 
         if (key.up.down){
             up = true;
+            lastButton = 0;
         }
         else{
             up = false;
@@ -115,12 +122,14 @@ public class Player extends Entity{
 
         if (key.down.down){
             down = true;
+            lastButton = 2;
         }
         else{
             down = false;
         }
 
         if (key.left.down){
+            lastButton = 3;
             left = true;
         }
         else{
@@ -128,6 +137,7 @@ public class Player extends Entity{
         }
 
         if (key.right.down){
+            lastButton = 1;
             right = true;
         }
         else{

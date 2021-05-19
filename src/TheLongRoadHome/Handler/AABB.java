@@ -124,11 +124,39 @@ public class AABB {
 
     public boolean collisionEntity (float _ax, float _ay){
         Rectangle player = new Rectangle((int)(position.x + _ax), (int)(position.y + _ay), 48, 48);
-        for (Enemy _enemy : PlayState.enemy) {
-            Rectangle temp = new Rectangle((int)_enemy.getPos().x, (int)_enemy.getPos().y, 48, 48);
+
+        if (this != PlayState.player.getBounds()){
+            Rectangle temp = new Rectangle((int) PlayState.player.getPos().x, (int) PlayState.player.getPos().y, 48, 48);
             if (player.intersects(temp))
                 return true;
         }
+
+        for (Enemy _enemy : PlayState.enemy) {
+            if (this != _enemy.getBounds()) {
+                Rectangle temp = new Rectangle((int) _enemy.getPos().x, (int) _enemy.getPos().y, 48, 48);
+                if (player.intersects(temp))
+                    return true;
+            }
+        }
         return false;
+    }
+
+    public Entity collisionEntityforBullet (float _ax, float _ay, Entity _notShot){
+        Rectangle player = new Rectangle((int)(position.x + _ax), (int)(position.y + _ay), 48, 48);
+
+        if (_notShot != PlayState.player){
+            Rectangle temp = new Rectangle((int) PlayState.player.getPos().x, (int) PlayState.player.getPos().y, 48, 48);
+            if (player.intersects(temp))
+                return PlayState.player;
+        }
+
+        for (Enemy _enemy : PlayState.enemy) {
+            if (_notShot != _enemy) {
+                Rectangle temp = new Rectangle((int) _enemy.getPos().x, (int) _enemy.getPos().y, 48, 48);
+                if (player.intersects(temp))
+                    return _enemy;
+            }
+        }
+        return null;
     }
 }

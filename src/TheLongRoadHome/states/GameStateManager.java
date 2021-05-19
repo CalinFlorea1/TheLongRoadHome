@@ -18,13 +18,14 @@ public class GameStateManager {
     public static final int MENU = 1;
     public static final int PAUSE = 2;
     public static final int GAMEOVER = 3;
+    public static final int CREDITS = 4;
 
     public GameStateManager () throws Exception {
         map = new Vector2f(GamePanel.width, GamePanel.height);
         Vector2f.setWorldVar(map.x, map.y);
 
         ListofStates = new Vector<>();
-        ListofStates.add(new PlayState (this));
+        ListofStates.add(new MenuState (this));
     }
 
     public void pop (int state) {
@@ -45,6 +46,9 @@ public class GameStateManager {
             case GAMEOVER:
                 ListofStates.add(new GameOverState(this));
                 break;
+            case CREDITS:
+                ListofStates.add(new CreditsState(this));
+                break;
         }
     }
 
@@ -55,20 +59,14 @@ public class GameStateManager {
 
     public void update (){
         Vector2f.setWorldVar(map.x, map.y);
-        for (GameState elem : ListofStates){
-            elem.update();
-        }
+        ListofStates.lastElement().update();
     }
 
-    public void input (MouseHandler mouse, KeyHandler key){
-        for (GameState elem : ListofStates){
-            elem.input(mouse, key);
-        }
+    public void input (MouseHandler mouse, KeyHandler key) throws Exception {
+        ListofStates.lastElement().input(mouse, key);
     }
 
     public void render (Graphics2D graphics2D){
-        for (GameState elem : ListofStates){
-            elem.render(graphics2D);
-        }
+        ListofStates.lastElement().render(graphics2D);
     }
 }

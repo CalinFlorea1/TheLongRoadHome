@@ -42,6 +42,10 @@ public abstract class Entity {
     protected AABB hitBounds;
     protected AABB bounds;
 
+    protected int lastButton = 0;
+    protected int delayShot = 0;
+    protected int life;
+
     public Entity (Sprite _sprite, Vector2f _origin, int _size) {
         sprite = _sprite;
         pos = _origin;
@@ -51,7 +55,7 @@ public abstract class Entity {
         hitBounds = new AABB(new Vector2f(_origin.x + (size / 2), _origin.y), size, size);
 
         animation = new Animation();
-        setAnimation (RIGHT, sprite.getSpriteArray (RIGHT), 10);
+        setAnimation (DOWN, sprite.getSpriteArray (DOWN), 10);
     }
 
     public void setAnimation (int _currentAnimation, BufferedImage [] _frames, int _delay) {
@@ -149,6 +153,18 @@ public abstract class Entity {
         animate ();
         //setHitBoxDirection ();
         animation.update();
+    }
+
+    public int getLastButton (){
+        return lastButton;
+    }
+
+    public int getDelayShot (){
+        return delayShot;
+    }
+
+    public void setDelayShot (int _delayShot){
+        delayShot = _delayShot;
     }
 
     public abstract void render (Graphics2D graphics2D);
