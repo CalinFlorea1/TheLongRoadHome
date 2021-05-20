@@ -34,7 +34,7 @@ public class PauseState extends GameState{
 
         if (mouse.getButton() == 1){
             if (mouse.getX() >= 562 && mouse.getX() <= 1363 && mouse.getY() >= 596 && mouse.getY() <= 699) {
-                gameStateManager.add(GameStateManager.MENU);
+                gameStateManager.add(GameStateManager.MENU, -1);
                 gameStateManager.pop(GameStateManager.PLAY);
                 gameStateManager.pop(GameStateManager.PLAY);
             }

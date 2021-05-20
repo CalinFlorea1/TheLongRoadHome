@@ -23,8 +23,6 @@ public class Sprite {
         widthTile = TILE_SIZE;
         heightTile = TILE_SIZE;
 
-        System.out.println("Loading: " + file + "...");
-
         SPRITESHEET = loadSprite (file);
 
         widthSprite = SPRITESHEET.getWidth() / widthTile;

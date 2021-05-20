@@ -29,8 +29,6 @@ public abstract class Entity {
     protected boolean right;
     protected boolean left;
     protected boolean attack;
-    protected int attackSpeed;
-    protected int atackDuration;
 
     protected float dx;
     protected float dy;
@@ -165,6 +163,13 @@ public abstract class Entity {
 
     public void setDelayShot (int _delayShot){
         delayShot = _delayShot;
+    }
+    public void decreaseLife (){
+        life -= 20;
+    }
+
+    public int getLife (){
+        return life;
     }
 
     public abstract void render (Graphics2D graphics2D);

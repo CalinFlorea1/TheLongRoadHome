@@ -11,7 +11,7 @@ public abstract class GameState{
         gameStateManager = _gameStateManager;
     }
 
-    public abstract void update();
+    public abstract void update() throws Exception;
     public abstract void render (Graphics2D g);
     public abstract void input (MouseHandler mouse, KeyHandler key) throws Exception;
 }

@@ -11,7 +11,7 @@ public class GameOverState extends GameState{
     private Sprite menuPhoto;
     public GameOverState (GameStateManager gameStateManager){
         super (gameStateManager);
-        menuPhoto = new Sprite ("MainMenu/PauseMenu.png");
+        menuPhoto = new Sprite ("MainMenu/GameOverMenu.png");
     }
 
     @Override
@@ -28,13 +28,15 @@ public class GameOverState extends GameState{
     public void input(MouseHandler mouse, KeyHandler key) throws Exception {
         if (mouse.getButton() == 1){
             if (mouse.getX() >= 600 && mouse.getX() <= 1320 && mouse.getY() >= 384 && mouse.getY() <= 496) {
-                gameStateManager.pop(GameStateManager.MENU);
+                int level = gameStateManager.getCurrentPlayState().getLevel();
+                gameStateManager.pop(GameStateManager.PLAY);
+                gameStateManager.add(GameStateManager.PLAY, level);
             }
         }
 
         if (mouse.getButton() == 1){
             if (mouse.getX() >= 562 && mouse.getX() <= 1363 && mouse.getY() >= 596 && mouse.getY() <= 699) {
-                gameStateManager.add(GameStateManager.MENU);
+                gameStateManager.add(GameStateManager.MENU, -1);
                 gameStateManager.pop(GameStateManager.PLAY);
                 gameStateManager.pop(GameStateManager.PLAY);
             }

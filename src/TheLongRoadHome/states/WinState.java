@@ -4,14 +4,14 @@ import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 import TheLongRoadHome.Handler.Vector2f;
 import TheLongRoadHome.graphics.Sprite;
+
 import java.awt.*;
 
-
-public class MenuState extends GameState{
+public class WinState extends GameState{
     private Sprite menuPhoto;
-    public MenuState (GameStateManager gameStateManager){
+    public WinState (GameStateManager gameStateManager){
         super (gameStateManager);
-        menuPhoto = new Sprite ("MainMenu/MainMenu.png");
+        menuPhoto = new Sprite ("MainMenu/YouWinMenu.png");
     }
 
     @Override
@@ -26,18 +26,18 @@ public class MenuState extends GameState{
 
     @Override
     public void input(MouseHandler mouse, KeyHandler key) throws Exception {
-        if (key.escape.down){
-            System.exit(0);
+        if (mouse.getButton() == 1){
+            if (mouse.getX() >= 600 && mouse.getX() <= 1320 && mouse.getY() >= 384 && mouse.getY() <= 496) {
+                int level = gameStateManager.getCurrentPlayState().getLevel();
+                gameStateManager.pop(GameStateManager.PLAY);
+                gameStateManager.add(GameStateManager.PLAY, level + 1);
+            }
         }
 
         if (mouse.getButton() == 1){
-            if (mouse.getX() >= 1113 && mouse.getX() <= 1463 && mouse.getY() >= 481 && mouse.getY() <= 547) {
-                gameStateManager.add(GameStateManager.PLAY, 1);
+            if (mouse.getX() >= 562 && mouse.getX() <= 1363 && mouse.getY() >= 596 && mouse.getY() <= 699) {
+                gameStateManager.add(GameStateManager.MENU, -1);
                 gameStateManager.pop(GameStateManager.PLAY);
-            }
-
-            if (mouse.getX() >= 1113 && mouse.getX() <= 1463 && mouse.getY() >= 744 && mouse.getY() <= 810){
-                gameStateManager.add(GameStateManager.CREDITS, -1);
                 gameStateManager.pop(GameStateManager.PLAY);
             }
         }

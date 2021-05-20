@@ -10,9 +10,9 @@ import java.awt.*;
 import java.util.Vector;
 
 public class Player extends Entity{
-    public Player(Sprite _sprite, Vector2f _origin, int _size) {
+    public Player(Sprite _sprite, Vector2f _origin, int _size, int _life) {
         super(_sprite, _origin, _size);
-        life = 100;
+        life = _life;
         bounds.setWidth(40);
         bounds.setHeight(40);
         bounds.setxOffset(14);

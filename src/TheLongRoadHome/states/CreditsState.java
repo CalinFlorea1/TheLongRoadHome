@@ -28,7 +28,7 @@ public class CreditsState extends GameState{
     public void input(MouseHandler mouse, KeyHandler key) throws Exception {
         if (mouse.getButton() == 1){
             if (mouse.getX() >= 118 && mouse.getX() <= 291 && mouse.getY() >= 890 && mouse.getY() <= 960) {
-                gameStateManager.add(GameStateManager.MENU);
+                gameStateManager.add(GameStateManager.MENU, -1);
                 gameStateManager.pop(GameStateManager.PLAY);
             }
         }

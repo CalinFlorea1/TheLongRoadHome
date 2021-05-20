@@ -1,6 +1,5 @@
 package TheLongRoadHome.entity;
 
-import TheLongRoadHome.Handler.AABB;
 import TheLongRoadHome.Handler.Vector2f;
 import TheLongRoadHome.graphics.Sprite;
 
@@ -8,14 +7,14 @@ import java.awt.*;
 
 public class Enemy extends Entity{
 
-    public Enemy(Sprite _sprite, Vector2f _origin, int _size) {
+    public Enemy(Sprite _sprite, Vector2f _origin, int _size, int _life) {
         super(_sprite, _origin, _size);
         bounds.setWidth(50);
         bounds.setHeight(50);
         bounds.setxOffset(10);
         bounds.setyOffset(10);
         down = true;
-        life = 20;
+        life = _life;
     }
 
     public void update (){

@@ -82,7 +82,11 @@ public class GamePanel extends JPanel implements Runnable {
             double now = System.nanoTime();
             int updateCount = 0;
             while (((now - lastUpdateTime) > timeBeforeRender) && (updateCount < mustUpdateBeforeRender)){
-                update();
+                try {
+                    update();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 try {
                     input (mouse, key);
                 } catch (Exception e) {
@@ -131,7 +135,7 @@ public class GamePanel extends JPanel implements Runnable {
         gameStateManager.input(mouse, key);
     }
 
-    public void update () {
+    public void update () throws Exception {
         gameStateManager.update();
     };
 

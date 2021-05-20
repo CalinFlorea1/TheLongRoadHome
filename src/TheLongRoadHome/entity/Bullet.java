@@ -49,9 +49,10 @@ public class Bullet extends Entity{
             }
             else{
                 shot = true;
-                if (temp.life <= 20){
-                    PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"),
-                            new Vector2f(temp.getPos().x, temp.getPos().y), 64));
+                PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"),
+                        new Vector2f(temp.getPos().x, temp.getPos().y), 64));
+                temp.decreaseLife();
+                if (temp.getLife() <= 0){
                     PlayState.enemy.remove(temp);
                 }
             }
@@ -68,9 +69,10 @@ public class Bullet extends Entity{
             }
             else{
                 shot = true;
-                if (temp.life <= 20){
-                    PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"),
-                            new Vector2f(temp.getPos().x, temp.getPos().y), 64));
+                PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"),
+                        new Vector2f(temp.getPos().x, temp.getPos().y), 64));
+                temp.decreaseLife();
+                if (temp.getLife() <= 0){
                     PlayState.enemy.remove(temp);
                 }
             }
@@ -83,6 +85,10 @@ public class Bullet extends Entity{
 
     public boolean isShot (){
         return shot;
+    }
+
+    public boolean isOut (){
+        return  (pos.x < 0 || pos.x > 1920 || pos.y < 0 || pos.y > 1080);
     }
 
     public void move (){
