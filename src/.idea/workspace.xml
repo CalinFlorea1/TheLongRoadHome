@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9b6936dd-d5d6-43d6-8d85-9af1e89b8697" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Map/mapLvl1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Map/mapLvl1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assets/Map/mapLvl2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Assets/Map/mapLvl2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TheLongRoadHome.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../TheLongRoadHome.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/TheLongRoadHome/Map/mapLvl1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/TheLongRoadHome/Map/mapLvl1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/TheLongRoadHome/Map/mapLvl2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/TheLongRoadHome/Map/mapLvl2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/TheLongRoadHome/TheLongRoadHome/entity/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/TheLongRoadHome/TheLongRoadHome/entity/Bullet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/TheLongRoadHome/TheLongRoadHome/states/GameOverState.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/TheLongRoadHome/TheLongRoadHome/states/GameOverState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/TheLongRoadHome/TheLongRoadHome/states/WinState.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/TheLongRoadHome/TheLongRoadHome/states/WinState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/Handler/AABB.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/Handler/AABB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/Handler/Audio.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/Handler/Audio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/Handler/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/Handler/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/Handler/MouseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/Handler/MouseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/Handler/Vector2f.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/Handler/Vector2f.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/Window/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/Window/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/entity/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/entity/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/entity/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/entity/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/entity/Explosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/entity/Explosion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/graphics/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/graphics/Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/graphics/Font.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/graphics/Font.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/graphics/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/graphics/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/states/CreditsState.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/states/CreditsState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/states/GameOverState.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/states/GameOverState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/states/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/states/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/states/GameStateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/states/GameStateManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/states/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/states/MenuState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/states/PauseState.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/states/PauseState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/states/PlayState.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/states/PlayState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/states/WinState.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/states/WinState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/tiles/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/tiles/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/tiles/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/tiles/TileMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/tiles/TileMapNorm.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/tiles/TileMapNorm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/tiles/TileMapObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/tiles/TileMapObj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/tiles/blocks/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/tiles/blocks/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/tiles/blocks/NormBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/tiles/blocks/NormBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheLongRoadHome/tiles/blocks/ObjBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/TheLongRoadHome/tiles/blocks/ObjBlock.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1snFAFDeIlZP8lx7S1tHLiJ7Wmf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9b6936dd-d5d6-43d6-8d85-9af1e89b8697" name="Default Changelist" comment="" />
+      <created>1621500304702</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621500304702</updated>
+      <workItem from="1621500310006" duration="10000" />
+    </task>
+    <servers />
+  </component>
+</project>

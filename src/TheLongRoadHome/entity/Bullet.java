@@ -51,9 +51,11 @@ public class Bullet extends Entity{
                 shot = true;
                 PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"),
                         new Vector2f(temp.getPos().x, temp.getPos().y), 64));
-                temp.decreaseLife();
-                if (temp.getLife() <= 0){
-                    PlayState.enemy.remove(temp);
+                if (temp.getClass() != playerStart.getClass()) {
+                    temp.decreaseLife();
+                    if (temp.getLife() <= 0 && temp.getClass() == Enemy.class) {
+                        PlayState.enemy.remove(temp);
+                    }
                 }
             }
         }
@@ -71,9 +73,11 @@ public class Bullet extends Entity{
                 shot = true;
                 PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"),
                         new Vector2f(temp.getPos().x, temp.getPos().y), 64));
-                temp.decreaseLife();
-                if (temp.getLife() <= 0){
-                    PlayState.enemy.remove(temp);
+                if (temp.getClass() != playerStart.getClass()) {
+                    temp.decreaseLife();
+                    if (temp.getLife() <= 0 && temp.getClass() == Enemy.class) {
+                        PlayState.enemy.remove(temp);
+                    }
                 }
             }
         }

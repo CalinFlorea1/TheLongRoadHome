@@ -4,10 +4,8 @@ import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 import TheLongRoadHome.Handler.Vector2f;
 import TheLongRoadHome.graphics.*;
-import TheLongRoadHome.states.PlayState;
 
 import java.awt.*;
-import java.util.Vector;
 
 public class Player extends Entity{
     public Player(Sprite _sprite, Vector2f _origin, int _size, int _life) {

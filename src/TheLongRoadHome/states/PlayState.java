@@ -4,6 +4,7 @@ import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 
 import java.awt.*;
+import java.util.Random;
 import java.util.Vector;
 
 import TheLongRoadHome.Handler.Vector2f;
@@ -19,14 +20,18 @@ public class PlayState extends GameState{
     private Font font;
     public static Player player;
     private TileManager tileManager;
-    private Vector <Bullet> bullets = new Vector<>();
-    public static Vector<Enemy> enemy = new Vector<>();
-    public static Vector <Explosion> explosions = new Vector<>();
+    private Vector <Bullet> bullets;
+    public static Vector<Enemy> enemy;
+    public static Vector <Explosion> explosions;
     private int level;
+    private static final int levelMax = 2;
 
     public PlayState (GameStateManager gameStateManager, int _level) throws Exception {
         super (gameStateManager);
         level = _level;
+        enemy = new Vector<>();
+        explosions = new Vector<>();
+        bullets = new Vector<>();
         switch (_level){
             case 1:
                 initLevel1();
@@ -52,9 +57,9 @@ public class PlayState extends GameState{
         tileManager = new TileManager("Map/mapLvl2.xml");
 
         font = new Font ("Textures/Font.png", 16, 16);
-        player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 60);
+        player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 60);
         enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 40));
-        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 40));
+        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 40));
         enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 40));
         enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 40));
     }
@@ -63,6 +68,11 @@ public class PlayState extends GameState{
         player.update();
         for (Enemy _enemy : enemy){
             _enemy.update();
+            if (_enemy.getContorShoot() <= 0){
+                bullets.add (new Bullet(new Sprite("Textures/Bullet.png"),
+                        new Vector2f(_enemy.getPos().x, _enemy.getPos().y), 64, _enemy.getCurrentDirection(), _enemy));
+                _enemy.setContorShoot(Math.abs(new Random().nextInt()) % 100 + 20);
+            }
         }
 
         bullets.removeIf(bullet -> bullet.isShot() || bullet.isOut());
@@ -96,7 +106,8 @@ public class PlayState extends GameState{
             if (player.getDelayShot() == 0) {
                 player.setDelayShot(1);
                 int lastButton = player.getLastButton();
-                bullets.add(new Bullet(new Sprite("Textures/Bullet.png"), new Vector2f(player.getPos().x, player.getPos().y), 64, lastButton, player));
+                bullets.add(new Bullet(new Sprite("Textures/Bullet.png"),
+                        new Vector2f(player.getPos().x, player.getPos().y), 64, lastButton, player));
             }
         }
         player.input(mouse, key);
@@ -124,5 +135,9 @@ public class PlayState extends GameState{
 
     public int getLevel (){
         return level;
+    }
+
+    public static int getLevelMax (){
+        return levelMax;
     }
 }

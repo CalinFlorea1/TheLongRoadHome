@@ -30,7 +30,9 @@ public class GameStateManager {
     }
 
     public void pop (int state) {
+        GameState temp = ListofStates.get(state);
         ListofStates.remove(state);
+        temp = null;
     }
 
     public void add (int state, int _level) throws Exception {
