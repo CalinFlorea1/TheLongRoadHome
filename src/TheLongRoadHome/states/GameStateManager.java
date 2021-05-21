@@ -1,6 +1,7 @@
 package TheLongRoadHome.states;
 
 import TheLongRoadHome.GamePanel;
+import TheLongRoadHome.Handler.Audio;
 import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 import TheLongRoadHome.Handler.Vector2f;
@@ -9,8 +10,10 @@ import java.awt.*;
 import java.util.Vector;
 
 public class GameStateManager {
-
     private Vector <GameState> ListofStates;
+
+    private static int points;
+    private static int level;
 
     private static Vector2f map;
 
@@ -73,5 +76,21 @@ public class GameStateManager {
 
     public PlayState getCurrentPlayState (){
         return (PlayState) ListofStates.get(0);
+    }
+
+    public static void increaseScore (int score){
+        points += score;
+    }
+
+    public static int getPoints (){
+        return points;
+    }
+
+    public static void setLevel (int _level){
+        level = _level;
+    }
+
+    public static int getLevel (){
+        return level;
     }
 }

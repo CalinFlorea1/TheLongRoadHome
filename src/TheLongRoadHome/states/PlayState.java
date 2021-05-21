@@ -66,12 +66,13 @@ public class PlayState extends GameState{
 
     public void update () throws Exception {
         player.update();
+        System.out.println(player.getScoreLevelCurrent());
         for (Enemy _enemy : enemy){
             _enemy.update();
             if (_enemy.getContorShoot() <= 0){
+                _enemy.setContorShoot((Math.abs(new Random().nextInt()) % 100) + 30);
                 bullets.add (new Bullet(new Sprite("Textures/Bullet.png"),
                         new Vector2f(_enemy.getPos().x, _enemy.getPos().y), 64, _enemy.getCurrentDirection(), _enemy));
-                _enemy.setContorShoot(Math.abs(new Random().nextInt()) % 100 + 20);
             }
         }
 
@@ -111,7 +112,6 @@ public class PlayState extends GameState{
             }
         }
         player.input(mouse, key);
-
     }
 
     public void render (Graphics2D graphics2D){

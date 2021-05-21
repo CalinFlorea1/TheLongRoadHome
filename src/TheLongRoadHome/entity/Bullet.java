@@ -2,6 +2,7 @@ package TheLongRoadHome.entity;
 
 import TheLongRoadHome.Handler.Vector2f;
 import TheLongRoadHome.graphics.Sprite;
+import TheLongRoadHome.states.GameState;
 import TheLongRoadHome.states.PlayState;
 
 import java.awt.*;
@@ -55,6 +56,7 @@ public class Bullet extends Entity{
                     temp.decreaseLife();
                     if (temp.getLife() <= 0 && temp.getClass() == Enemy.class) {
                         PlayState.enemy.remove(temp);
+                        PlayState.player.increaseScore(PlayState.player.getLife() * 20 + 100);
                     }
                 }
             }
@@ -77,6 +79,7 @@ public class Bullet extends Entity{
                     temp.decreaseLife();
                     if (temp.getLife() <= 0 && temp.getClass() == Enemy.class) {
                         PlayState.enemy.remove(temp);
+                        PlayState.player.increaseScore(PlayState.player.getLife() + 100);
                     }
                 }
             }

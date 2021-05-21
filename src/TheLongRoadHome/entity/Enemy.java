@@ -19,7 +19,7 @@ public class Enemy extends Entity{
         bounds.setyOffset(10);
 
         life = _life;
-        contorShoot = Math.abs(new Random().nextInt()) % 100;
+        contorShoot = Math.abs(new Random().nextInt()) % 100 + 20;
         contorDirection = Math.abs(new Random().nextInt()) % 100 + 20;
     }
 
@@ -148,12 +148,9 @@ public class Enemy extends Entity{
         graphics2D.drawImage(animation.getImage(), (int) (pos.x), (int) (pos.y), size, size, null);
     }
 
-    public void decreaseContorShoot (){
-        contorShoot--;
-    }
 
     public int getContorShoot (){
-        return contorDirection;
+        return contorShoot;
     }
 
     public void setContorShoot (int _contorShoot){
