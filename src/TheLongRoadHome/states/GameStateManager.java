@@ -1,10 +1,7 @@
 package TheLongRoadHome.states;
 
 import TheLongRoadHome.GamePanel;
-import TheLongRoadHome.Handler.Audio;
-import TheLongRoadHome.Handler.KeyHandler;
-import TheLongRoadHome.Handler.MouseHandler;
-import TheLongRoadHome.Handler.Vector2f;
+import TheLongRoadHome.Handler.*;
 
 import java.awt.*;
 import java.util.Vector;
@@ -24,12 +21,19 @@ public class GameStateManager {
     public static final int CREDITS = 4;
     public static final int WIN = 5;
 
+    private static int Difficulty = 1;
+    private static Database database;
+
     public GameStateManager () throws Exception {
         map = new Vector2f(GamePanel.width, GamePanel.height);
         Vector2f.setWorldVar(map.x, map.y);
 
         ListofStates = new Vector<>();
         ListofStates.add(new MenuState (this));
+
+        database = new Database();
+        database.createTable();
+        database.LoadDataBase();
     }
 
     public void pop (int state) {
@@ -92,5 +96,17 @@ public class GameStateManager {
 
     public static int getLevel (){
         return level;
+    }
+
+    public static int getDifficulty (){
+        return Difficulty;
+    }
+
+    public static void setDifficulty (int _difficulty){
+         Difficulty = _difficulty;
+    }
+
+    public static Database getDatabase (){
+        return database;
     }
 }

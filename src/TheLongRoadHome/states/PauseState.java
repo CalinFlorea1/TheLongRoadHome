@@ -1,5 +1,6 @@
 package TheLongRoadHome.states;
 
+import TheLongRoadHome.Handler.Database;
 import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 import TheLongRoadHome.Handler.Vector2f;
@@ -34,6 +35,14 @@ public class PauseState extends GameState{
 
         if (mouse.getButton() == 1){
             if (mouse.getX() >= 562 && mouse.getX() <= 1363 && mouse.getY() >= 596 && mouse.getY() <= 699) {
+                Database database = GameStateManager.getDatabase();
+                int level = GameStateManager.getLevel();
+                int Difficulty = GameStateManager.getDifficulty();
+                int Score = GameStateManager.getPoints();
+                int ID = database.getNumberOfEntries();
+                database.addElement(ID + 1, level, Score, Difficulty
+                        , PlayState.player, PlayState.enemy);
+
                 gameStateManager.add(GameStateManager.MENU, -1);
                 gameStateManager.pop(GameStateManager.PLAY);
                 gameStateManager.pop(GameStateManager.PLAY);
