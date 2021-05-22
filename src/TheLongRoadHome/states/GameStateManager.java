@@ -25,6 +25,7 @@ public class GameStateManager {
 
     private static int Difficulty = 1;
     private static Database database;
+    private static int IDCurrent;
 
     public GameStateManager () throws Exception {
         map = new Vector2f(GamePanel.width, GamePanel.height);
@@ -117,4 +118,10 @@ public class GameStateManager {
     public static Database getDatabase (){
         return database;
     }
+
+    public static void setIDCurrent (int _IDCurrent) {IDCurrent = _IDCurrent;}
+
+    public static int getIDCurrent () {return IDCurrent;}
+
+    public void setPoints (int _points){ points = _points; }
 }

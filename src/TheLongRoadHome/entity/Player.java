@@ -8,7 +8,7 @@ import TheLongRoadHome.graphics.*;
 import java.awt.*;
 
 public class Player extends Entity{
-    private int scoreLevelCurrent;
+    private static int scoreLevelCurrent;
     public Player(Sprite _sprite, Vector2f _origin, int _size, int _life) {
         super(_sprite, _origin, _size);
         life = _life;
@@ -156,7 +156,7 @@ public class Player extends Entity{
         scoreLevelCurrent += _scoreCurrentLevel;
     }
 
-    public int getScoreLevelCurrent(){
+    public static int getScoreLevelCurrent(){
         return scoreLevelCurrent;
     }
 }

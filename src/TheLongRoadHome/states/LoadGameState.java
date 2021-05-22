@@ -1,17 +1,25 @@
 package TheLongRoadHome.states;
 
-import TheLongRoadHome.Handler.KeyHandler;
-import TheLongRoadHome.Handler.MouseHandler;
-import TheLongRoadHome.Handler.Vector2f;
+import TheLongRoadHome.Handler.*;
 import TheLongRoadHome.graphics.Sprite;
 
 import java.awt.*;
+import java.sql.SQLException;
+import java.util.Vector;
 
 public class LoadGameState extends GameState{
+    private int currentPage = 0;
     private Sprite menuPhoto;
-    public LoadGameState (GameStateManager gameStateManager){
+    Vector<DatabaseElement> databaseElements;
+    int numbersEntries;
+    public LoadGameState (GameStateManager gameStateManager) throws SQLException {
         super (gameStateManager);
-        menuPhoto = new Sprite ("MainMenu/CreditsMenu.png");
+        menuPhoto = new Sprite ("MainMenu/LoadGameMenu.png");
+        Database database = GameStateManager.getDatabase();
+        database.LoadDataBase();
+
+        databaseElements = database.getDatabaseElements();
+        numbersEntries = database.getNumberOfEntries();
     }
 
     @Override
@@ -27,10 +35,11 @@ public class LoadGameState extends GameState{
     @Override
     public void input(MouseHandler mouse, KeyHandler key) throws Exception {
         if (mouse.getButton() == 1){
-            if (mouse.getX() >= 118 && mouse.getX() <= 291 && mouse.getY() >= 890 && mouse.getY() <= 960) {
+            if (mouse.getX() >= 55 && mouse.getX() <= 203 && mouse.getY() >= 42 && mouse.getY() <= 104) {
                 gameStateManager.add(GameStateManager.MENU, -1);
                 gameStateManager.pop(GameStateManager.PLAY);
             }
         }
+
     }
 }

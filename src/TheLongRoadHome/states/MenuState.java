@@ -4,8 +4,11 @@ import TheLongRoadHome.Handler.Database;
 import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 import TheLongRoadHome.Handler.Vector2f;
+import TheLongRoadHome.entity.Enemy;
+import TheLongRoadHome.entity.Player;
 import TheLongRoadHome.graphics.Sprite;
 import java.awt.*;
+import java.util.Vector;
 
 
 public class MenuState extends GameState{
@@ -33,7 +36,16 @@ public class MenuState extends GameState{
 
         if (mouse.getButton() == 1){
             if (mouse.getX() >= 1113 && mouse.getX() <= 1463 && mouse.getY() >= 481 && mouse.getY() <= 547) {
+                Database database = GameStateManager.getDatabase();
+                database.LoadDataBase();
+                int ID = database.getNumberOfEntries();
+                GameStateManager.setIDCurrent(ID + 1);
                 GameStateManager.setLevel(1);
+
+                database.addElement(GameStateManager.getIDCurrent(), GameStateManager.getLevel(), GameStateManager.getPoints(),
+                        GameStateManager.getDifficulty(),
+                        new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100),
+                        new Vector<Enemy>());
 
                 gameStateManager.add(GameStateManager.PLAY, 1);
                 gameStateManager.pop(GameStateManager.PLAY);

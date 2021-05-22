@@ -1,13 +1,11 @@
 package TheLongRoadHome.states;
 
-import TheLongRoadHome.Handler.KeyHandler;
-import TheLongRoadHome.Handler.MouseHandler;
+import TheLongRoadHome.Handler.*;
 
 import java.awt.*;
 import java.util.Random;
 import java.util.Vector;
 
-import TheLongRoadHome.Handler.Vector2f;
 import TheLongRoadHome.entity.Bullet;
 import TheLongRoadHome.entity.Enemy;
 import TheLongRoadHome.entity.Explosion;
@@ -47,28 +45,69 @@ public class PlayState extends GameState{
 
         font = new Font ("Textures/Font.png", 16, 16);
 
-        if (GameStateManager.getDifficulty() == 1) {
-            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 20));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 20));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 20));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 20));
+        Database database = GameStateManager.getDatabase();
+        database.LoadDataBase();
+
+        Vector <DatabaseElement> databaseElements = database.getDatabaseElements();
+        DatabaseElement databaseElement = null;
+
+        int SCORE = 0, NUMBER_ENEMY = 0, DIFFICULTY = 0, PLAYER_LIFE = 0;
+        Vector <Integer> enemyLife;
+        Vector <Vector2f> enemyVector;
+        Vector2f playerPos = null;
+
+        try {
+            databaseElement = databaseElements.get(GameStateManager.getIDCurrent());
+        }
+        catch (IndexOutOfBoundsException e){
+            NUMBER_ENEMY = -1;
+            DIFFICULTY = GameStateManager.getDifficulty();
         }
 
-        if (GameStateManager.getDifficulty() == 2) {
-            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 40));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 40));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 40));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 40));
+        if (NUMBER_ENEMY != -1){
+            NUMBER_ENEMY = databaseElement.getNUMBER_ENEMY();
+            DIFFICULTY = databaseElement.getDIFFICULTY();
         }
 
-        if (GameStateManager.getDifficulty() == 3) {
-            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 60));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 60));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 60));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 60));
+        if (NUMBER_ENEMY <= 0) {
+            if (DIFFICULTY == 1) {
+                player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 20));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 20));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 20));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 20));
+            }
+
+            if (DIFFICULTY == 2) {
+                player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 40));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 40));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 40));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 40));
+            }
+
+            if (DIFFICULTY == 3) {
+                player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 60));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 60));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 60));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 60));
+            }
+        }
+        else{
+
+            SCORE = databaseElement.getSCORE();
+            PLAYER_LIFE = databaseElement.getPLAYER_LIFE();
+            playerPos = databaseElement.getPLAYER();
+            enemyLife = databaseElement.getENEMY_LIFE();
+            enemyVector = databaseElement.getENEMY();
+
+            player = new Player(new Sprite("Textures/TankHero2.png"), playerPos, 64, PLAYER_LIFE);
+
+            for (int i = 0; i < NUMBER_ENEMY; i++) {
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"),
+                        enemyVector.elementAt(i), 64, enemyLife.elementAt(i)));
+            }
         }
     }
 

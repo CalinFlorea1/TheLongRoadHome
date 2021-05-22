@@ -79,7 +79,7 @@ public class Bullet extends Entity{
                     temp.decreaseLife();
                     if (temp.getLife() <= 0 && temp.getClass() == Enemy.class) {
                         PlayState.enemy.remove(temp);
-                        PlayState.player.increaseScore(PlayState.player.getLife() + 100);
+                        PlayState.player.increaseScore(PlayState.player.getLife() * 20 + 100);
                     }
                 }
             }
