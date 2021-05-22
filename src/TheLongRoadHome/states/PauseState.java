@@ -41,7 +41,7 @@ public class PauseState extends GameState{
                 int level = GameStateManager.getLevel();
                 int Difficulty = GameStateManager.getDifficulty();
                 int Score = GameStateManager.getPoints() + Player.getScoreLevelCurrent();
-                int ID = database.getNumberOfEntries();
+                int ID = GameStateManager.getIDCurrent();
                 database.updateDataBase(ID, level, Score, Difficulty
                         , PlayState.player, PlayState.enemy);
 

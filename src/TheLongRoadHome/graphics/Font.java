@@ -92,12 +92,19 @@ public class Font {
     }
 
     public BufferedImage getFont (char letter) {
-        int value = letter - 'A';
+        int value = 0;
+        if (letter >= '0' && letter <= '9') {
+            value = letter - '0';
+            return getFont(value, 6);
+        }
+        else {
+            value = letter - 'A';
 
-        int x = value % widthFont;
-        int y = value / widthFont;
+            int x = value % widthFont;
+            int y = value / widthFont;
 
-        return getFont(x, y);
+            return getFont(x, y);
+        }
     }
 
 }

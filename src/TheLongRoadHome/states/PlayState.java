@@ -57,7 +57,7 @@ public class PlayState extends GameState{
         Vector2f playerPos = null;
 
         try {
-            databaseElement = databaseElements.get(GameStateManager.getIDCurrent());
+            databaseElement = databaseElements.get(GameStateManager.getIDCurrent() - 1);
         }
         catch (IndexOutOfBoundsException e){
             NUMBER_ENEMY = -1;
@@ -116,34 +116,75 @@ public class PlayState extends GameState{
 
         font = new Font ("Textures/Font.png", 16, 16);
 
-        if (GameStateManager.getDifficulty() == 1) {
-            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 60);
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 40));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 40));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 40));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 40));
+        Database database = GameStateManager.getDatabase();
+        database.LoadDataBase();
+
+        Vector <DatabaseElement> databaseElements = database.getDatabaseElements();
+        DatabaseElement databaseElement = null;
+
+        int SCORE = 0, NUMBER_ENEMY = 0, DIFFICULTY = 0, PLAYER_LIFE = 0;
+        Vector <Integer> enemyLife;
+        Vector <Vector2f> enemyVector;
+        Vector2f playerPos = null;
+
+        try {
+            databaseElement = databaseElements.get(GameStateManager.getIDCurrent() - 1);
+        }
+        catch (IndexOutOfBoundsException e){
+            NUMBER_ENEMY = -1;
+            DIFFICULTY = GameStateManager.getDifficulty();
         }
 
-        if (GameStateManager.getDifficulty() == 2) {
-            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 60);
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 60));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 60));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 60));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 60));
+        System.out.println("Ceava");
+        if (NUMBER_ENEMY != -1){
+            NUMBER_ENEMY = databaseElement.getNUMBER_ENEMY();
+            System.out.println(NUMBER_ENEMY);
+            DIFFICULTY = databaseElement.getDIFFICULTY();
         }
 
-        if (GameStateManager.getDifficulty() == 3) {
-            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 20);
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 100));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 100));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 100));
-            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 100));
+        if (NUMBER_ENEMY <= 0) {
+            if (GameStateManager.getDifficulty() == 1) {
+                player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 60);
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 40));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 40));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 40));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 40));
+            }
+
+            if (GameStateManager.getDifficulty() == 2) {
+                player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 60);
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 60));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 60));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 60));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 60));
+            }
+
+            if (GameStateManager.getDifficulty() == 3) {
+                player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 20);
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 100));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 100));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 100));
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 100));
+            }
+        }
+        else{
+            SCORE = databaseElement.getSCORE();
+            PLAYER_LIFE = databaseElement.getPLAYER_LIFE();
+            playerPos = databaseElement.getPLAYER();
+            enemyLife = databaseElement.getENEMY_LIFE();
+            enemyVector = databaseElement.getENEMY();
+
+            player = new Player(new Sprite("Textures/TankHero2.png"), playerPos, 64, PLAYER_LIFE);
+
+            for (int i = 0; i < NUMBER_ENEMY; i++) {
+                enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"),
+                        enemyVector.elementAt(i), 64, enemyLife.elementAt(i)));
+            }
         }
     }
 
     public void update () throws Exception {
         player.update();
-        System.out.println(player.getScoreLevelCurrent());
         for (Enemy _enemy : enemy){
             _enemy.update();
             if (_enemy.getContorShoot() <= 0){

@@ -44,7 +44,7 @@ public class MenuState extends GameState{
 
                 database.addElement(GameStateManager.getIDCurrent(), GameStateManager.getLevel(), GameStateManager.getPoints(),
                         GameStateManager.getDifficulty(),
-                        new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100),
+                        new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(0, 0), 64, 100),
                         new Vector<Enemy>());
 
                 gameStateManager.add(GameStateManager.PLAY, 1);
@@ -53,6 +53,11 @@ public class MenuState extends GameState{
 
             if (mouse.getX() >= 1113 && mouse.getX() <= 1463 && mouse.getY() >= 744 && mouse.getY() <= 810){
                 gameStateManager.add(GameStateManager.CREDITS, -1);
+                gameStateManager.pop(GameStateManager.PLAY);
+            }
+
+            if (mouse.getX() >= 1105 && mouse.getX() <= 1485 && mouse.getY() >= 573 && mouse.getY() <= 629){
+                gameStateManager.add(GameStateManager.LOADGAME, -1);
                 gameStateManager.pop(GameStateManager.PLAY);
             }
         }
