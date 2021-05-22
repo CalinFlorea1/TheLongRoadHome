@@ -26,6 +26,7 @@ public class GameStateManager {
     private static int Difficulty = 1;
     private static Database database;
     private static int IDCurrent;
+    Audio music1;
 
     public GameStateManager () throws Exception {
         map = new Vector2f(GamePanel.width, GamePanel.height);
@@ -37,6 +38,9 @@ public class GameStateManager {
         database = new Database();
         database.createTable();
         database.LoadDataBase();
+
+        music1 = new Audio("/SFX/CarryOn.mp3");
+        //music1.play();
     }
 
     public void pop (int state) {
@@ -69,7 +73,7 @@ public class GameStateManager {
                 ListofStates.add(new LoadGameState(this));
                 break;
             case SETTINGS:
-                ListofStates.add(new LoadGameState(this));
+                ListofStates.add(new SettingsState(this));
                 break;
         }
     }
@@ -123,5 +127,5 @@ public class GameStateManager {
 
     public static int getIDCurrent () {return IDCurrent;}
 
-    public void setPoints (int _points){ points = _points; }
+    public static void setPoints (int _points){ points = _points; }
 }

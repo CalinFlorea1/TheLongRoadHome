@@ -67,6 +67,7 @@ public class PlayState extends GameState{
         if (NUMBER_ENEMY != -1){
             NUMBER_ENEMY = databaseElement.getNUMBER_ENEMY();
             DIFFICULTY = databaseElement.getDIFFICULTY();
+            GameStateManager.setPoints(databaseElement.getSCORE());
         }
 
         if (NUMBER_ENEMY <= 0) {
@@ -138,7 +139,7 @@ public class PlayState extends GameState{
         System.out.println("Ceava");
         if (NUMBER_ENEMY != -1){
             NUMBER_ENEMY = databaseElement.getNUMBER_ENEMY();
-            System.out.println(NUMBER_ENEMY);
+            GameStateManager.setPoints(databaseElement.getSCORE());
             DIFFICULTY = databaseElement.getDIFFICULTY();
         }
 
@@ -248,6 +249,9 @@ public class PlayState extends GameState{
             if (!explosion.getAnimation().hasPlayedOnce())
                 explosion.render(graphics2D);
         }
+
+        Sprite.drawArray(graphics2D, font, "LIFE " + player.getLife(), new Vector2f(1700, 22), 32, 32, 16, 0);
+        Sprite.drawArray(graphics2D, font, "SCORE " + Player.getScoreLevelCurrent(), new Vector2f(1700, 64), 32, 32, 16, 0);
     }
 
 

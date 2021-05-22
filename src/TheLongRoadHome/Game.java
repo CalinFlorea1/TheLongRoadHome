@@ -5,7 +5,7 @@ import TheLongRoadHome.Window.Window;
 public class Game {
 
     public Game (){
-        new Window();
+        Window.getInstance();
     }
 
     public static void main (String []Args){

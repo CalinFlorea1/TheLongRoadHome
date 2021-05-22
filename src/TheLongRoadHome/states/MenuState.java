@@ -60,6 +60,11 @@ public class MenuState extends GameState{
                 gameStateManager.add(GameStateManager.LOADGAME, -1);
                 gameStateManager.pop(GameStateManager.PLAY);
             }
+
+            if (mouse.getX() >= 1105 && mouse.getX() <= 1485 && mouse.getY() >= 660 && mouse.getY() <= 716){
+                gameStateManager.add(GameStateManager.SETTINGS, -1);
+                gameStateManager.pop(GameStateManager.PLAY);
+            }
         }
     }
 }
