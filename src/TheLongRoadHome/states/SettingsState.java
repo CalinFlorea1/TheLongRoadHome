@@ -7,9 +7,9 @@ import TheLongRoadHome.graphics.Sprite;
 
 import java.awt.*;
 
-public class LoadGameState extends GameState{
+public class SettingsState extends GameState{
     private Sprite menuPhoto;
-    public LoadGameState (GameStateManager gameStateManager){
+    public SettingsState (GameStateManager gameStateManager){
         super (gameStateManager);
         menuPhoto = new Sprite ("MainMenu/CreditsMenu.png");
     }

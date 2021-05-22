@@ -46,22 +46,60 @@ public class PlayState extends GameState{
         tileManager = new TileManager("Map/mapLvl1.xml");
 
         font = new Font ("Textures/Font.png", 16, 16);
-        player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
-        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 20));
-        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 20));
-        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 20));
-        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 20));
+
+        if (GameStateManager.getDifficulty() == 1) {
+            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 20));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 20));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 20));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 20));
+        }
+
+        if (GameStateManager.getDifficulty() == 2) {
+            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 40));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 40));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 40));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 40));
+        }
+
+        if (GameStateManager.getDifficulty() == 3) {
+            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1000, 320), 64, 100);
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 60));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1500, 800), 64, 60));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 60));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 60));
+        }
     }
 
     void initLevel2 () throws Exception {
         tileManager = new TileManager("Map/mapLvl2.xml");
 
         font = new Font ("Textures/Font.png", 16, 16);
-        player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 60);
-        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 40));
-        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 40));
-        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 40));
-        enemy.add (new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 40));
+
+        if (GameStateManager.getDifficulty() == 1) {
+            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 60);
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 40));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 40));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 40));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 40));
+        }
+
+        if (GameStateManager.getDifficulty() == 2) {
+            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 60);
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 60));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 60));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 60));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 60));
+        }
+
+        if (GameStateManager.getDifficulty() == 3) {
+            player = new Player(new Sprite("Textures/TankHero2.png"), new Vector2f(1600, 900), 64, 20);
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(300, 220), 64, 100));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(200, 500), 64, 100));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(700, 200), 64, 100));
+            enemy.add(new Enemy(new Sprite("Textures/TankEnemy2.png"), new Vector2f(1227, 550), 64, 100));
+        }
     }
 
     public void update () throws Exception {

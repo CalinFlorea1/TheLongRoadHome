@@ -20,6 +20,8 @@ public class GameStateManager {
     public static final int GAMEOVER = 3;
     public static final int CREDITS = 4;
     public static final int WIN = 5;
+    public static final int LOADGAME = 6;
+    public static final int SETTINGS = 7;
 
     private static int Difficulty = 1;
     private static Database database;
@@ -61,6 +63,12 @@ public class GameStateManager {
                 break;
             case WIN:
                 ListofStates.add(new WinState(this));
+                break;
+            case LOADGAME:
+                ListofStates.add(new LoadGameState(this));
+                break;
+            case SETTINGS:
+                ListofStates.add(new LoadGameState(this));
                 break;
         }
     }

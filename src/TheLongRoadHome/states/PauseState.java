@@ -40,7 +40,7 @@ public class PauseState extends GameState{
                 int Difficulty = GameStateManager.getDifficulty();
                 int Score = GameStateManager.getPoints();
                 int ID = database.getNumberOfEntries();
-                database.addElement(ID + 1, level, Score, Difficulty
+                database.updateDataBase(1, level, Score, Difficulty
                         , PlayState.player, PlayState.enemy);
 
                 gameStateManager.add(GameStateManager.MENU, -1);

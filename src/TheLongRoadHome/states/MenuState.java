@@ -1,5 +1,6 @@
 package TheLongRoadHome.states;
 
+import TheLongRoadHome.Handler.Database;
 import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 import TheLongRoadHome.Handler.Vector2f;
@@ -32,6 +33,8 @@ public class MenuState extends GameState{
 
         if (mouse.getButton() == 1){
             if (mouse.getX() >= 1113 && mouse.getX() <= 1463 && mouse.getY() >= 481 && mouse.getY() <= 547) {
+                GameStateManager.setLevel(1);
+
                 gameStateManager.add(GameStateManager.PLAY, 1);
                 gameStateManager.pop(GameStateManager.PLAY);
             }
