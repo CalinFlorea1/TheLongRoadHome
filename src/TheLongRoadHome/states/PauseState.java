@@ -1,13 +1,12 @@
 package TheLongRoadHome.states;
 
-import TheLongRoadHome.Handler.Database;
-import TheLongRoadHome.Handler.KeyHandler;
-import TheLongRoadHome.Handler.MouseHandler;
-import TheLongRoadHome.Handler.Vector2f;
+import TheLongRoadHome.Handler.*;
 import TheLongRoadHome.entity.Player;
 import TheLongRoadHome.graphics.Sprite;
 
 import java.awt.*;
+import java.util.Random;
+import java.util.Vector;
 
 public class PauseState extends GameState{
     private Sprite menuPhoto;
@@ -44,6 +43,9 @@ public class PauseState extends GameState{
                 int ID = GameStateManager.getIDCurrent();
                 database.updateDataBase(ID, level, Score, Difficulty
                         , PlayState.player, PlayState.enemy);
+
+                Vector<Audio> music = GameStateManager.getMusic();
+                music.get(Math.abs(new Random().nextInt()) % 2).play();
 
                 gameStateManager.add(GameStateManager.MENU, -1);
                 gameStateManager.pop(GameStateManager.PLAY);

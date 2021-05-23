@@ -23,6 +23,7 @@ public class PlayState extends GameState{
     public static Vector <Explosion> explosions;
     private int level;
     private static final int levelMax = 2;
+    private static Audio tankShootSound;
 
     public PlayState (GameStateManager gameStateManager, int _level) throws Exception {
         super (gameStateManager);
@@ -30,6 +31,13 @@ public class PlayState extends GameState{
         enemy = new Vector<>();
         explosions = new Vector<>();
         bullets = new Vector<>();
+        tankShootSound = new Audio("/SFX/ShotTank.wav");
+
+        Vector <Audio> audios = GameStateManager.getMusic();
+        for (Audio audio : audios){
+            audio.stop();
+        }
+
         switch (_level){
             case 1:
                 initLevel1();
@@ -136,7 +144,6 @@ public class PlayState extends GameState{
             DIFFICULTY = GameStateManager.getDifficulty();
         }
 
-        System.out.println("Ceava");
         if (NUMBER_ENEMY != -1){
             NUMBER_ENEMY = databaseElement.getNUMBER_ENEMY();
             GameStateManager.setPoints(databaseElement.getSCORE());
@@ -262,4 +269,6 @@ public class PlayState extends GameState{
     public static int getLevelMax (){
         return levelMax;
     }
+
+    public static Audio getTankShootSound () {return tankShootSound;}
 }

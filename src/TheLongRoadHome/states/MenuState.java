@@ -1,13 +1,11 @@
 package TheLongRoadHome.states;
 
-import TheLongRoadHome.Handler.Database;
-import TheLongRoadHome.Handler.KeyHandler;
-import TheLongRoadHome.Handler.MouseHandler;
-import TheLongRoadHome.Handler.Vector2f;
+import TheLongRoadHome.Handler.*;
 import TheLongRoadHome.entity.Enemy;
 import TheLongRoadHome.entity.Player;
 import TheLongRoadHome.graphics.Sprite;
 import java.awt.*;
+import java.util.Random;
 import java.util.Vector;
 
 

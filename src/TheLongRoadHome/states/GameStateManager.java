@@ -4,6 +4,7 @@ import TheLongRoadHome.GamePanel;
 import TheLongRoadHome.Handler.*;
 
 import java.awt.*;
+import java.util.Random;
 import java.util.Vector;
 
 public class GameStateManager {
@@ -26,21 +27,24 @@ public class GameStateManager {
     private static int Difficulty = 1;
     private static Database database;
     private static int IDCurrent;
-    Audio music1;
+    private static Vector <Audio> music;
 
     public GameStateManager () throws Exception {
         map = new Vector2f(GamePanel.width, GamePanel.height);
         Vector2f.setWorldVar(map.x, map.y);
 
-        ListofStates = new Vector<>();
-        ListofStates.add(new MenuState (this));
-
         database = new Database();
         database.createTable();
         database.LoadDataBase();
 
-        music1 = new Audio("/SFX/CarryOn.mp3");
-        //music1.play();
+        music = new Vector<>();
+        music.add(new Audio("/SFX/CarryOn.mp3"));
+        music.add(new Audio("/SFX/HailToTheKing.mp3"));
+
+        music.get(Math.abs(new Random().nextInt()) % 2).play();
+
+        ListofStates = new Vector<>();
+        ListofStates.add(new MenuState (this));
     }
 
     public void pop (int state) {
@@ -128,4 +132,6 @@ public class GameStateManager {
     public static int getIDCurrent () {return IDCurrent;}
 
     public static void setPoints (int _points){ points = _points; }
+
+    public static Vector<Audio> getMusic (){ return music; }
 }

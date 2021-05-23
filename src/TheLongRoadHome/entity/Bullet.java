@@ -51,6 +51,7 @@ public class Bullet extends Entity{
             }
             else{
                 shot = true;
+                PlayState.getTankShootSound().play();
                 PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"),
                         new Vector2f(temp.getPos().x, temp.getPos().y), 64));
                 if (temp.getClass() != playerStart.getClass()) {
@@ -63,6 +64,7 @@ public class Bullet extends Entity{
             }
         }
         else{
+            PlayState.getTankShootSound().play();
             PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"), new Vector2f(pos.x + dx, pos.y), 64));
             shot = true;
         }
@@ -74,6 +76,7 @@ public class Bullet extends Entity{
             }
             else{
                 shot = true;
+                PlayState.getTankShootSound().play();
                 PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"),
                         new Vector2f(temp.getPos().x, temp.getPos().y), 64));
                 if (temp.getClass() != playerStart.getClass()) {
@@ -86,6 +89,7 @@ public class Bullet extends Entity{
             }
         }
         else{
+            PlayState.getTankShootSound().play();
             PlayState.explosions.add(new Explosion(new Sprite ("Textures/Explosion.png"), new Vector2f(pos.x, pos.y + dy), 64));
             shot = true;
         }

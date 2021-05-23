@@ -1,11 +1,14 @@
 package TheLongRoadHome.states;
 
+import TheLongRoadHome.Handler.Audio;
 import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 import TheLongRoadHome.Handler.Vector2f;
 import TheLongRoadHome.graphics.Sprite;
 
 import java.awt.*;
+import java.util.Random;
+import java.util.Vector;
 
 public class GameOverState extends GameState{
     private Sprite menuPhoto;
@@ -37,6 +40,8 @@ public class GameOverState extends GameState{
 
         if (mouse.getButton() == 1){
             if (mouse.getX() >= 562 && mouse.getX() <= 1363 && mouse.getY() >= 596 && mouse.getY() <= 699) {
+                Vector<Audio> music = GameStateManager.getMusic();
+                music.get(Math.abs(new Random().nextInt()) % 2).play();
                 gameStateManager.pop(GameStateManager.PLAY);
                 gameStateManager.pop(GameStateManager.PLAY);
                 gameStateManager.add(GameStateManager.MENU, -1);
