@@ -104,7 +104,7 @@ public class LoadGameState extends GameState{
                     if ((currentPage * 5 + 1) <= numbersEntries) {
                         GameStateManager.setIDCurrent(currentPage * 5 + 1);
                         GameStateManager.setLevel(databaseElements.get(currentPage * 5).getLEVEL());
-                        GameStateManager.setDifficulty(databaseElements.get(currentPage * 5 + 3).getDIFFICULTY());
+                        GameStateManager.setDifficulty(databaseElements.get(currentPage * 5).getDIFFICULTY());
                         if (GameStateManager.getLevel() <= 2 && GameStateManager.getLevel() >= 1) {
                             gameStateManager.pop(GameStateManager.PLAY);
                             gameStateManager.add(GameStateManager.PLAY, GameStateManager.getLevel());
@@ -116,7 +116,7 @@ public class LoadGameState extends GameState{
                     if ((currentPage * 5 + 2) <= numbersEntries) {
                         GameStateManager.setIDCurrent(currentPage * 5 + 2);
                         GameStateManager.setLevel(databaseElements.get(currentPage * 5 + 1).getLEVEL());
-                        GameStateManager.setDifficulty(databaseElements.get(currentPage * 5 + 3).getDIFFICULTY());
+                        GameStateManager.setDifficulty(databaseElements.get(currentPage * 5 + 1).getDIFFICULTY());
                         if (GameStateManager.getLevel() <= 2 && GameStateManager.getLevel() >= 1) {
                             gameStateManager.pop(GameStateManager.PLAY);
                             gameStateManager.add(GameStateManager.PLAY, GameStateManager.getLevel());
@@ -128,7 +128,7 @@ public class LoadGameState extends GameState{
                     if ((currentPage * 5 + 3) <= numbersEntries) {
                         GameStateManager.setIDCurrent(currentPage * 5 + 3);
                         GameStateManager.setLevel(databaseElements.get(currentPage * 5 + 2).getLEVEL());
-                        GameStateManager.setDifficulty(databaseElements.get(currentPage * 5 + 3).getDIFFICULTY());
+                        GameStateManager.setDifficulty(databaseElements.get(currentPage * 5 + 2).getDIFFICULTY());
                         if (GameStateManager.getLevel() <= 2 && GameStateManager.getLevel() >= 1) {
                             gameStateManager.pop(GameStateManager.PLAY);
                             gameStateManager.add(GameStateManager.PLAY, GameStateManager.getLevel());
@@ -152,7 +152,7 @@ public class LoadGameState extends GameState{
                     if ((currentPage * 5 + 5) <= numbersEntries) {
                         GameStateManager.setIDCurrent(currentPage * 5 + 5);
                         GameStateManager.setLevel(databaseElements.get(currentPage * 5 + 4).getLEVEL());
-                        GameStateManager.setDifficulty(databaseElements.get(currentPage * 5 + 3).getDIFFICULTY());
+                        GameStateManager.setDifficulty(databaseElements.get(currentPage * 5 + 4).getDIFFICULTY());
                         if (GameStateManager.getLevel() <= 2 && GameStateManager.getLevel() >= 1) {
                             gameStateManager.pop(GameStateManager.PLAY);
                             gameStateManager.add(GameStateManager.PLAY, GameStateManager.getLevel());

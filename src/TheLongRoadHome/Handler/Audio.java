@@ -1,5 +1,7 @@
 package TheLongRoadHome.Handler;
 
+import TheLongRoadHome.states.GameStateManager;
+
 import javax.sound.sampled.*;
 
 public class Audio {
@@ -18,11 +20,13 @@ public class Audio {
     }
     public void play()
     {
-        if (clip == null)
-            return;
-        stop();
-        clip.setFramePosition(0);
-        clip.start();
+        if (GameStateManager.getVOLUME()) {
+            if (clip == null)
+                return;
+            stop();
+            clip.setFramePosition(0);
+            clip.start();
+        }
 
     }
     public void stop()

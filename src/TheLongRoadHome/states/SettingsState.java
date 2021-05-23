@@ -1,11 +1,14 @@
 package TheLongRoadHome.states;
 
+import TheLongRoadHome.Handler.Audio;
 import TheLongRoadHome.Handler.KeyHandler;
 import TheLongRoadHome.Handler.MouseHandler;
 import TheLongRoadHome.Handler.Vector2f;
 import TheLongRoadHome.graphics.Sprite;
 
 import java.awt.*;
+import java.util.Random;
+import java.util.Vector;
 
 public class SettingsState extends GameState{
     private Sprite menuPhoto;
@@ -39,6 +42,22 @@ public class SettingsState extends GameState{
             }
             if (mouse.getX() >= 363 && mouse.getX() <= 600 && mouse.getY() >= 605 && mouse.getY() <= 680){
                 GameStateManager.setDifficulty(3);
+            }
+            if (mouse.getX() >= 1349 && mouse.getX() <= 1522 && mouse.getY() >= 430 && mouse.getY() <= 505){
+                if (GameStateManager.getVOLUME()) {
+                    GameStateManager.volumeOff();
+                    Vector<Audio> audioVector = GameStateManager.getMusic();
+                    for (Audio audio : audioVector) {
+                        audio.stop();
+                    }
+                }
+            }
+            if (mouse.getX() >= 1355 && mouse.getX() <= 1516 && mouse.getY() >= 518 && mouse.getY() <= 593){
+                if (!GameStateManager.getVOLUME()) {
+                    GameStateManager.volumeOn();
+                    Vector<Audio> audioVector = GameStateManager.getMusic();
+                    audioVector.get(Math.abs(new Random().nextInt()) % 2).play();
+                }
             }
         }
     }

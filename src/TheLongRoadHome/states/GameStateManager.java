@@ -28,10 +28,12 @@ public class GameStateManager {
     private static Database database;
     private static int IDCurrent;
     private static Vector <Audio> music;
+    private static boolean VOLUME;
 
     public GameStateManager () throws Exception {
         map = new Vector2f(GamePanel.width, GamePanel.height);
         Vector2f.setWorldVar(map.x, map.y);
+        VOLUME = true;
 
         database = new Database();
         database.createTable();
@@ -134,4 +136,10 @@ public class GameStateManager {
     public static void setPoints (int _points){ points = _points; }
 
     public static Vector<Audio> getMusic (){ return music; }
+
+    public static void volumeOff () { VOLUME = false; }
+
+    public static void volumeOn () { VOLUME = true; }
+
+    public static boolean getVOLUME () { return VOLUME; }
 }
