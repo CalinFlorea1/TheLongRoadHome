@@ -26,7 +26,8 @@ public class WinState extends GameState{
     @Override
     public void render(Graphics2D graphics2D) {
         Sprite.drawPhoto(graphics2D, menuPhoto.getSpriteSheet(), new Vector2f(0, 0), 1920, 1080);
-        Sprite.drawArray(graphics2D, font, "Points " + GameStateManager.getPoints(),new Vector2f(714, 790), 64, 64, 32, 0);
+        Sprite.drawArray(graphics2D, font, "Points " + (GameStateManager.getPoints() + Player.getScoreLevelCurrent()),
+                new Vector2f(714, 790), 64, 64, 32, 0);
     }
 
     @Override

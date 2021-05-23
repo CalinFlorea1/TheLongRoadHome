@@ -39,6 +39,7 @@ public class MenuState extends GameState{
                 int ID = database.getNumberOfEntries();
                 GameStateManager.setIDCurrent(ID + 1);
                 GameStateManager.setLevel(1);
+                GameStateManager.setPoints(0);
 
                 database.addElement(GameStateManager.getIDCurrent(), GameStateManager.getLevel(), GameStateManager.getPoints(),
                         GameStateManager.getDifficulty(),
